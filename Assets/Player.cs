@@ -5,17 +5,11 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
         float horizontalInput = CrossPlatformInputManager.GetAxis("Horizontal");
 
-        Debug.Log(horizontalInput);
+        transform.position += horizontalInput * Time.deltaTime * Vector3.right;
     }
 }
