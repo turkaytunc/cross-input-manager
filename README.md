@@ -1,2 +1,2 @@
-# Crossplatform input
+# Crossplatform input and camera scripts
 
