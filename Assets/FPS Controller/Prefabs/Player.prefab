@@ -292,11 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc615756c44c564b962b4eff4fa219c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 20
   gravityScale: -40
   jumpHeight: 5
   groundCheckTransform: {fileID: 8461261319198576651}
-  groundCheckRadius: 0.2
+  groundCheckRadius: 0.3
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
