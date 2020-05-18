@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float maxChaseRadius = 20f;
     [SerializeField] private float minChaseRadius = 2f;
     [SerializeField] private float movementSpeed = 7f;
+    [SerializeField] private float turnSpeed = 15f;
 
 
     void Start()
@@ -25,20 +26,30 @@ public class EnemyAI : MonoBehaviour
     {
         chaseDistance = Vector3.Distance(followTransform.position, transform.position);
 
+
         if ( chaseDistance > minChaseRadius && chaseDistance < maxChaseRadius )
         {
-            Vector3 offset = (followTransform.position - transform.position).normalized * Time.deltaTime * movementSpeed;
+            CalculateLookRotation();
 
+            Vector3 offset = (followTransform.position - transform.position).normalized * Time.deltaTime * movementSpeed;
             navMeshAgent.Move(offset);
         }
     }
 
+    private void CalculateLookRotation()
+    {
+        Quaternion rotation = Quaternion.LookRotation(followTransform.position - transform.position, Vector3.up);
+        rotation.x = 0f;
+        rotation.z = 0f;
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * turnSpeed);
+    }
+
     private void OnDrawGizmos()
     {
-        Handles.color = new Vector4(255, 0, 0, 0.2f);
+        Handles.color = new Vector4(230, 0, 0, 0.1f);
         Handles.DrawSolidDisc(transform.position + Vector3.down, Vector3.up, maxChaseRadius);
 
-        Handles.color = new Vector4(0, 255, 0, 0.2f);
+        Handles.color = new Vector4(0, 240, 0, 0.1f);
         Handles.DrawSolidDisc(transform.position + Vector3.down * 0.5f, Vector3.up, minChaseRadius);
     }
 }
