@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     private float followDistance;
     private float maxChaseRadius = 20f;
     private float minChaseRadius = 2f;
-    private float movementSpeed = .5f;
+    private float movementSpeed = 7f;
 
 
     void Start()
@@ -27,8 +27,9 @@ public class EnemyAI : MonoBehaviour
 
         if ( followDistance > minChaseRadius && followDistance < maxChaseRadius )
         {
+            Vector3 offset = (followTransform.position - transform.position).normalized * Time.deltaTime * movementSpeed;
 
-            navMeshAgent.Move((followTransform.position - transform.position) * Time.deltaTime * movementSpeed);
+            navMeshAgent.Move(offset);
         }
     }
 
