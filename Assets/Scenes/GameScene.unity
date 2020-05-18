@@ -3542,7 +3542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2502203975881118265, guid: 24ef751bc951fef4ca7d5c50e43d645e, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2516053412921678852, guid: 24ef751bc951fef4ca7d5c50e43d645e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6109,7 +6109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5dfb90db507ff408bfb3a1c514b978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followTransform: {fileID: 0}
+  maxChaseRadius: 20
+  minChaseRadius: 2
+  movementSpeed: 7
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
