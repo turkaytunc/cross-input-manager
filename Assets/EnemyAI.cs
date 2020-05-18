@@ -38,7 +38,8 @@ public class EnemyAI : MonoBehaviour
 
     private void CalculateLookRotation()
     {
-        Quaternion rotation = Quaternion.LookRotation(followTransform.position - transform.position, Vector3.up);
+        Vector3 distanceBetweenPlayerAndThisGameObject = (followTransform.position - transform.position).normalized;
+        Quaternion rotation = Quaternion.LookRotation(distanceBetweenPlayerAndThisGameObject, Vector3.up);
         rotation.x = 0f;
         rotation.z = 0f;
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * turnSpeed);
